@@ -113,3 +113,22 @@ document.addEventListener('DOMContentLoaded', () => {
     updateSlider();
 
 });
+
+const faqItems = document.querySelectorAll('.faq__item');
+
+faqItems.forEach(item => {
+    const button = item.querySelector('.faq__button');
+    const answer = item.querySelector('.faq__answer');
+
+    button.addEventListener('click', () => {
+        const isOpen = item.classList.toggle('active');
+
+        button.setAttribute('aria-expanded', isOpen);
+
+        if (isOpen) {
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+        } else {
+            answer.style.maxHeight = '0px';
+        }
+    });
+});
